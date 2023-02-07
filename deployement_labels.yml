@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+        name: mywebsite
+spec:
+        replicas: 30
+        selector:
+                matchLabels:
+                        type: frontend
+        template:
+                metadata:
+                        name: abc
+                        labels:
+                                type: frontend
+                spec:
+                        nodeSelector:
+                                type: large
+                        containers:
+                                - name: deployment
+                                  image: rupeshsaini09/farm-website

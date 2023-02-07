@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+        name: mywebsite
+spec:
+        replicas: 30
+        selector:
+                matchLabels:
+                        type: practice
+        template:
+                metadata:
+                        name: abc
+                        labels:
+                                type: practice
+                spec:
+                        tolerations:
+                                - key: "type"
+                                  operator: "Equal"
+                                  value: "large"
+                                  effect: "NoSchedule"
+                        containers:
+                                - name: deployment
+                                  image: rupeshsaini09/farm-website
