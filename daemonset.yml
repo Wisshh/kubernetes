@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+        name: logs-collector
+spec:
+        selector:
+                matchLabels:
+                        app: logserver
+        template:
+                metadata:
+                        name: abc
+                        labels:
+                                app: logserver
+                spec:
+                        containers:
+                                - name: log
+                                  image: nginx
