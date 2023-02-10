@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+        name: wordpress-pod
+        namespace: project
+spec:
+        replicas: 1
+        selector:
+                matchLabels:
+                        app: wordpress
+        template:
+                metadata:
+                        name: my-wordpress-app
+                        labels:
+                                app: wordpress
+                spec:
+                        containers:
+                                - name: mywp-con
+                                  image: wordpress
+                                  env:
+                                          - name: WORDPRESS_DB_HOST
+                                            value: "10.104.99.16"
+                                          - name: WORDPRESS_DB_USER
+                                            value: "root"
+                                          - name: WORDPRESS_DB_PASSWORD
+                                            value: "Redhat"
+                                          - name: WORDPRESS_DB_NAME
+                                            value: "wordpress"
+                                         
+
+

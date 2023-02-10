@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+        name: my-mysql-db
+        namespace: project
+spec:
+        replicas: 1
+        selector:
+                matchLabels:
+                        app: mysql
+        template:
+                metadata:
+                        name: mysql-DB
+                        labels:
+                                app: mysql
+                spec:
+                        containers:
+                            - name: mydb
+                              image: mysql
+                              env:
+                                      - name: MYSQL_ROOT_PASSWORD
+                                        value: "Redhat"
+                                      - name: MYSQL_DATABASE
+                                        value: "wordpress"
+
+                                
+
